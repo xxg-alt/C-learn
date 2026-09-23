@@ -1,0 +1,14 @@
+# ---- .NET / Visual Studio 构建产物与缓存 ----
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ---- workbuddy 本地记忆 ----
+.workbuddy/
+
+# ---- Obsidian ----
+.obsidian/
