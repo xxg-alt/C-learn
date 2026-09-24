@@ -144,9 +144,20 @@ namespace HelloDotNetGuide.CSharp语法
         /// 2. 创建对象并用对象初始化器赋值：new Book { Title="C#入门", Price=59.9 }
         /// 3. 输出书名和价格
         /// </summary>
+        public class Book 
+        {
+            public string Title { get; set; } = " ";
+            public double Price { get; set; }
+            public Book(string Title, double Price)
+            {
+                this.Title = Title;
+                this.Price = Price;
+            }
+        }
         public static void Exercise05_AutoProperty()
         {
-            // TODO: 在这里编写代码
+            Book b1 = new Book("C#入门", 59.9);
+            Console.WriteLine("{0},{1}", b1.Price, b1.Title);
         }
 
         /// <summary>
