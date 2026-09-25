@@ -148,10 +148,15 @@ namespace HelloDotNetGuide.CSharp语法
         {
             public string Title { get; set; } = " ";
             public double Price { get; set; }
+            public string ISBN { get; private set; } = "";
             public Book(string Title, double Price)
             {
                 this.Title = Title;
                 this.Price = Price;
+            }
+            public Book( string ISBN)
+            {
+                this.ISBN = ISBN;
             }
         }
         public static void Exercise05_AutoProperty()
@@ -168,7 +173,9 @@ namespace HelloDotNetGuide.CSharp语法
         /// </summary>
         public static void Exercise06_PropertyAccess()
         {
-            // TODO: 在这里编写代码
+            Console.WriteLine("六");
+            Book b1 = new Book("111");
+            Console.WriteLine("{0}",b1.ISBN);
         }
 
         /// <summary>
@@ -178,9 +185,34 @@ namespace HelloDotNetGuide.CSharp语法
         /// 3. 测试：先赋值 25 输出，再赋值 -5 观察结果
         /// 回顾：这里用到了第一周的 if-else 判断
         /// </summary>
+        public class Person 
+        {
+            private int age;
+            public int Age
+            {
+                get
+                {
+                    return age;
+                }
+                set
+                {
+                    if (value <=0 || value > 150)
+                    {
+                        Console.WriteLine("无效");
+                    }
+                    else
+                    {
+                        age =value;
+                    }
+                }
+            }
+
+        }
         public static void Exercise07_PropertyValidation()
         {
-            // TODO: 在这里编写代码
+            Person p1 = new Person();
+            p1.Age = -10;
+            Console.WriteLine("{0}", p1.Age);
         }
 
         /// <summary>
