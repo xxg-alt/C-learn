@@ -17,9 +17,9 @@ namespace HelloDotNetGuide
             Phase2Exercises.Exercise05_AutoProperty();
             Phase2Exercises.Exercise06_PropertyAccess();
             Phase2Exercises.Exercise07_PropertyValidation();
-            //Phase2Exercises.Exercise08_ReadOnlyProperty();
-            //Phase2Exercises.Exercise09_Inheritance();
-            //Phase2Exercises.Exercise10_VirtualOverride();
+            Phase2Exercises.Exercise08_ReadOnlyProperty();
+            Phase2Exercises.Exercise09_Inheritance();
+            Phase2Exercises.Exercise10_VirtualOverride();
             //Phase2Exercises.Exercise11_Polymorphism();
             //Phase2Exercises.Exercise12_BaseKeyword();
             //Phase2Exercises.Exercise13_IsAndAs();

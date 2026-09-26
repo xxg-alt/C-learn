@@ -36,14 +36,14 @@ C-learn/
 | 05 | 自动属性（Book + 对象初始化器） | ✅ |
 | 06 | 属性的读写控制（私有 set / ISBN） | ✅ |
 | 07 | 属性验证（Age 0-150 范围校验） | ✅ |
-| 08 | 只读属性与计算属性（Circle.Area） | ⬜ |
+| 08 | 只读属性与计算属性（Circle.Area） | ✅ |
 
 ### 三、继承与多态
 
 | 编号 | 练习内容 | 状态 |
 |:---:|---|:---:|
-| 09 | 继承基础（Animal / Dog） | ⬜ |
-| 10 | virtual 与 override | ⬜ |
+| 09 | 继承基础（Animal / Dog） | ✅ |
+| 10 | virtual 与 override | ✅ |
 | 11 | 多态（Animal 数组统一调用） | ⬜ |
 | 12 | base 关键字（Vehicle / Car） | ⬜ |
 | 13 | is / as 类型判断 | ⬜ |

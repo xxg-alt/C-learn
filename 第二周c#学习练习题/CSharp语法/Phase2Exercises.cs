@@ -1,4 +1,5 @@
 using System;
+using System.Xml.Linq;
 
 namespace HelloDotNetGuide.CSharp语法
 {
@@ -60,6 +61,7 @@ namespace HelloDotNetGuide.CSharp语法
         }
         public static void Exercise01_DefineClass()
         {
+            Console.WriteLine(" ");
             Student student = new Student();
             student.Name = "张三";
             student.Age = 20;
@@ -78,6 +80,7 @@ namespace HelloDotNetGuide.CSharp语法
         
         public static void Exercise02_Constructor()
         {
+            Console.WriteLine(" ");
             Student student1 = new Student();
             student1.Introduce();
             Student student2 = new Student("李四", 22);
@@ -112,6 +115,7 @@ namespace HelloDotNetGuide.CSharp语法
         }
         public static void Exercise03_ThisKeyword()
         {
+            Console.WriteLine(" ");
             Rectangle r1 = new Rectangle(3, 4);
             double area=r1.GetArea();
             double perimeter=r1.GetPerimeter();
@@ -128,6 +132,7 @@ namespace HelloDotNetGuide.CSharp语法
         /// </summary>
         public static void Exercise04_StaticMember()
         {
+            Console.WriteLine(" ");
             Student C1 = new Student("ljj", 5);
             Student C2 = new Student();
             Student C3 = new Student("ljj");
@@ -161,6 +166,7 @@ namespace HelloDotNetGuide.CSharp语法
         }
         public static void Exercise05_AutoProperty()
         {
+            Console.WriteLine(" ");
             Book b1 = new Book("C#入门", 59.9);
             Console.WriteLine("{0},{1}", b1.Price, b1.Title);
         }
@@ -173,6 +179,7 @@ namespace HelloDotNetGuide.CSharp语法
         /// </summary>
         public static void Exercise06_PropertyAccess()
         {
+            Console.WriteLine(" ");
             Console.WriteLine("六");
             Book b1 = new Book("111");
             Console.WriteLine("{0}",b1.ISBN);
@@ -210,6 +217,7 @@ namespace HelloDotNetGuide.CSharp语法
         }
         public static void Exercise07_PropertyValidation()
         {
+            Console.WriteLine(" ");
             Person p1 = new Person();
             p1.Age = -10;
             Console.WriteLine("{0}", p1.Age);
@@ -222,9 +230,35 @@ namespace HelloDotNetGuide.CSharp语法
         /// 3. 输出半径为 5 的圆的面积（保留两位小数，格式 :F2）
         /// 回顾：第一周的字符串插值 $"" 和格式化
         /// </summary>
+        public class Circle 
+        {
+            private double r;
+            public double Radius 
+            {
+                get
+                {
+                    return r;
+                }
+                set
+                {
+                    r = value;
+                }
+            }
+            public double Area
+            {
+                get
+                {
+                    return Math.PI * r * r;
+                }
+            }
+        }
+
         public static void Exercise08_ReadOnlyProperty()
         {
-            // TODO: 在这里编写代码
+            Console.WriteLine(" ");
+            Circle c1 = new Circle();
+            c1.Radius = 5.0;
+            Console.WriteLine($"面积为{c1.Area:F2}");
         }
 
         #endregion
@@ -238,9 +272,42 @@ namespace HelloDotNetGuide.CSharp语法
         /// 3. 创建 Dog 对象，调用继承来的 Eat() 和自己的 Bark()
         /// 思考：Dog 没有定义 Eat，为什么能调用？
         /// </summary>
+        public class Animal
+        {
+            public string Name { get; set; } = "";
+            public void Eat()
+            {
+                Console.WriteLine($"{Name}正在吃东西");
+            }
+            public virtual void MakeSound()
+            {
+                Console.WriteLine("动物发出声音");
+            }
+        }
+        public class Dog : Animal
+        {
+            public void Brak()
+            {
+                Console.WriteLine("汪汪汪");
+            }
+            public override void MakeSound()
+            {
+                Console.WriteLine("汪汪汪");
+            }
+        }
+        public class Cat : Animal 
+        {
+            public override void MakeSound()
+            {
+                Console.WriteLine("喵喵喵");
+            }
+        }
         public static void Exercise09_Inheritance()
         {
-            // TODO: 在这里编写代码
+            Console.WriteLine(" ");
+            Dog dog = new Dog { Name = "pak" };
+            dog.Eat();
+            dog.Brak();
         }
 
         /// <summary>
@@ -251,7 +318,13 @@ namespace HelloDotNetGuide.CSharp语法
         /// </summary>
         public static void Exercise10_VirtualOverride()
         {
-            // TODO: 在这里编写代码
+            Console.WriteLine(" ");
+            var A1 = new Animal();
+            var D1 = new Dog();
+            var C1 = new Cat();
+            A1.MakeSound();
+            D1.MakeSound();
+            C1.MakeSound();
         }
 
         /// <summary>
