@@ -390,7 +390,20 @@ namespace HelloDotNetGuide.CSharp语法
         /// </summary>
         public static void Exercise13_IsAndAs()
         {
-            // TODO: 在这里编写代码
+            var D1 = new Dog();
+            var C1 = new Cat();
+            Animal[] arr = { D1, C1 };
+            for(int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i] is Dog dog)
+                {
+                    dog.Brak();
+                }
+                else
+                {
+                    Console.WriteLine("这不是一只狗");
+                }
+            }
         }
 
         #endregion
