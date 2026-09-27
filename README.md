@@ -44,8 +44,8 @@ C-learn/
 |:---:|---|:---:|
 | 09 | 继承基础（Animal / Dog） | ✅ |
 | 10 | virtual 与 override | ✅ |
-| 11 | 多态（Animal 数组统一调用） | ⬜ |
-| 12 | base 关键字（Vehicle / Car） | ⬜ |
+| 11 | 多态（Animal 数组统一调用） | ✅ |
+| 12 | base 关键字（Vehicle / Car） | ✅ |
 | 13 | is / as 类型判断 | ⬜ |
 
 ### 四、对象数组与方法综合

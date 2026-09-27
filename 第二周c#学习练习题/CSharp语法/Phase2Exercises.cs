@@ -336,7 +336,15 @@ namespace HelloDotNetGuide.CSharp语法
         /// </summary>
         public static void Exercise11_Polymorphism()
         {
-            // TODO: 在这里编写代码
+            Console.WriteLine(" ");
+            var D1 = new Dog();
+            var C1 = new Cat();
+            Animal[] arr ={ D1, C1 };
+            foreach(var n in arr)
+            {
+                Console.WriteLine("19");
+                n.MakeSound();
+            }
         }
 
         /// <summary>
@@ -346,9 +354,32 @@ namespace HelloDotNetGuide.CSharp语法
         ///    用 : base(brand) 调用父类构造函数，并输出 "这是一辆X座的车"
         /// 3. 创建 Car("比亚迪", 5)，观察两个构造函数的调用顺序
         /// </summary>
+        public class Vehicle 
+        {
+            public string brand ;
+            public Vehicle(string brand)
+            {
+                this.brand = brand;
+                Console.WriteLine($"创建了品牌为{brand}的车");
+            }
+            //public void Show()
+            //{
+            //    Console.WriteLine($"创建了品牌为{brand}的车");
+            //}
+        }
+        public class CAT : Vehicle 
+        {
+            public int seats;
+            public CAT(string brand, int seats) : base(brand)
+            {
+                this.seats = seats;
+                Console.WriteLine($"这是一辆{seats}座的车");
+            }
+        }
+
         public static void Exercise12_BaseKeyword()
         {
-            // TODO: 在这里编写代码
+            CAT aT = new CAT("比亚迪", 5);
         }
 
         /// <summary>
