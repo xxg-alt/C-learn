@@ -77,7 +77,7 @@ namespace HelloDotNetGuide.CSharp语法
         /// 3. 用第三个构造函数创建对象，验证结果
         /// 思考：和练习1"先 new 再逐个赋值"相比，用构造函数初始化的好处是什么？
         /// </summary>
-        
+
         public static void Exercise02_Constructor()
         {
             Console.WriteLine(" ");
@@ -95,11 +95,11 @@ namespace HelloDotNetGuide.CSharp语法
         /// 3. 定义方法 GetArea() 返回面积、GetPerimeter() 返回周长
         /// 4. 创建 3x4 的矩形，输出面积和周长
         /// </summary>
-        public class Rectangle 
+        public class Rectangle
         {
             double width;
             double height;
-            public Rectangle(double width,double height)
+            public Rectangle(double width, double height)
             {
                 this.width = width;
                 this.height = height;
@@ -117,8 +117,8 @@ namespace HelloDotNetGuide.CSharp语法
         {
             Console.WriteLine(" ");
             Rectangle r1 = new Rectangle(3, 4);
-            double area=r1.GetArea();
-            double perimeter=r1.GetPerimeter();
+            double area = r1.GetArea();
+            double perimeter = r1.GetPerimeter();
             Console.WriteLine("面积为{0}，周长为{1}", area, perimeter);
         }
 
@@ -149,7 +149,7 @@ namespace HelloDotNetGuide.CSharp语法
         /// 2. 创建对象并用对象初始化器赋值：new Book { Title="C#入门", Price=59.9 }
         /// 3. 输出书名和价格
         /// </summary>
-        public class Book 
+        public class Book
         {
             public string Title { get; set; } = " ";
             public double Price { get; set; }
@@ -159,7 +159,7 @@ namespace HelloDotNetGuide.CSharp语法
                 this.Title = Title;
                 this.Price = Price;
             }
-            public Book( string ISBN)
+            public Book(string ISBN)
             {
                 this.ISBN = ISBN;
             }
@@ -182,7 +182,7 @@ namespace HelloDotNetGuide.CSharp语法
             Console.WriteLine(" ");
             Console.WriteLine("六");
             Book b1 = new Book("111");
-            Console.WriteLine("{0}",b1.ISBN);
+            Console.WriteLine("{0}", b1.ISBN);
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace HelloDotNetGuide.CSharp语法
         /// 3. 测试：先赋值 25 输出，再赋值 -5 观察结果
         /// 回顾：这里用到了第一周的 if-else 判断
         /// </summary>
-        public class Person 
+        public class Person
         {
             private int age;
             public int Age
@@ -203,13 +203,13 @@ namespace HelloDotNetGuide.CSharp语法
                 }
                 set
                 {
-                    if (value <=0 || value > 150)
+                    if (value <= 0 || value > 150)
                     {
                         Console.WriteLine("无效");
                     }
                     else
                     {
-                        age =value;
+                        age = value;
                     }
                 }
             }
@@ -230,10 +230,10 @@ namespace HelloDotNetGuide.CSharp语法
         /// 3. 输出半径为 5 的圆的面积（保留两位小数，格式 :F2）
         /// 回顾：第一周的字符串插值 $"" 和格式化
         /// </summary>
-        public class Circle 
+        public class Circle
         {
             private double r;
-            public double Radius 
+            public double Radius
             {
                 get
                 {
@@ -295,7 +295,7 @@ namespace HelloDotNetGuide.CSharp语法
                 Console.WriteLine("汪汪汪");
             }
         }
-        public class Cat : Animal 
+        public class Cat : Animal
         {
             public override void MakeSound()
             {
@@ -339,8 +339,8 @@ namespace HelloDotNetGuide.CSharp语法
             Console.WriteLine(" ");
             var D1 = new Dog();
             var C1 = new Cat();
-            Animal[] arr ={ D1, C1 };
-            foreach(var n in arr)
+            Animal[] arr = { D1, C1 };
+            foreach (var n in arr)
             {
                 Console.WriteLine("19");
                 n.MakeSound();
@@ -354,9 +354,9 @@ namespace HelloDotNetGuide.CSharp语法
         ///    用 : base(brand) 调用父类构造函数，并输出 "这是一辆X座的车"
         /// 3. 创建 Car("比亚迪", 5)，观察两个构造函数的调用顺序
         /// </summary>
-        public class Vehicle 
+        public class Vehicle
         {
-            public string brand ;
+            public string brand;
             public Vehicle(string brand)
             {
                 this.brand = brand;
@@ -367,7 +367,7 @@ namespace HelloDotNetGuide.CSharp语法
             //    Console.WriteLine($"创建了品牌为{brand}的车");
             //}
         }
-        public class CAT : Vehicle 
+        public class CAT : Vehicle
         {
             public int seats;
             public CAT(string brand, int seats) : base(brand)
@@ -393,7 +393,7 @@ namespace HelloDotNetGuide.CSharp语法
             var D1 = new Dog();
             var C1 = new Cat();
             Animal[] arr = { D1, C1 };
-            for(int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < arr.Length; i++)
             {
                 if (arr[i] is Dog dog)
                 {
@@ -417,9 +417,45 @@ namespace HelloDotNetGuide.CSharp语法
         /// 3. 找出年龄最大的学生并输出
         /// 回顾：第一周练习16的"找最大值"思路，只不过这次比较的是对象的属性
         /// </summary>
+        public class StudentArray
+        {
+            public string Name { get; set; }
+            public int Age { get; set; }
+            public StudentArray(string name, int age)
+            {
+                Name = name;
+                Age = age;
+            }
+            public void Introduce()
+            {
+                Console.WriteLine($"大家好，我是{Name}，今年{Age}岁");
+            }
+        }
         public static void Exercise14_ObjectArray()
         {
-            // TODO: 在这里编写代码
+           
+            Console.WriteLine(" ");
+            StudentArray a1 = new StudentArray("TOM", 25);
+            StudentArray a2 = new StudentArray("jouru", 35);
+            StudentArray a3 = new StudentArray("ljj", 19);
+            
+            StudentArray[] arrays = { a1, a2, a3 };
+           int  Max = arrays[0].Age;
+            for (int i = 0;i<arrays.Length; i++)
+            {
+                arrays[i].Introduce();
+                if(Max < arrays[i].Age)
+                {
+                    Max = arrays[i].Age;
+                }
+            }
+            Console.WriteLine($"最大年龄为{Max}");
+            //foreach(var brr in arrays)
+            //{
+            //    int Max=brr[i];
+            //    brr.Introduce();
+
+            //}
         }
 
         /// <summary>
