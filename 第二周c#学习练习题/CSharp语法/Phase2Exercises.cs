@@ -1,5 +1,6 @@
 using System;
 using System.Xml.Linq;
+using static HelloDotNetGuide.CSharp语法.Phase2Exercises;
 
 namespace HelloDotNetGuide.CSharp语法
 {
@@ -58,6 +59,24 @@ namespace HelloDotNetGuide.CSharp语法
             {
                 Console.WriteLine("{0}", Count);
             }
+
+            //练习15对应的定义方法
+            public void PrintStudent(Student s)
+            {
+                Console.WriteLine($"大家好，我是{s.Name}，今年{s.Age}岁");
+            }
+            public void CreateStudent(string name, int age)
+            {
+                Student student12 = new Student(name, age);
+                Console.WriteLine($"创建新对象成功，我是{student12.Name}，今年{student12.Age}岁");
+                
+            }
+            public void CompareAge(Student a, Student b)
+            {
+                int Max = a.Age < b.Age ? b.Age : a.Age;
+                Console.WriteLine($"最高年龄为{Max}");
+            }
+            //
         }
         public static void Exercise01_DefineClass()
         {
@@ -468,7 +487,13 @@ namespace HelloDotNetGuide.CSharp语法
         /// </summary>
         public static void Exercise15_ObjectAsParameter()
         {
-            // TODO: 在这里编写代码
+            Console.WriteLine(" ");
+            Student s1 = new Student("Tom",15);
+            Student s2 = new Student("xg", 35);
+            Student s3 = new Student();
+            s3.PrintStudent(s2);
+            s3.CreateStudent("ljj", 45);
+            s3.CompareAge(s1, s2);
         }
 
         /// <summary>
