@@ -505,7 +505,17 @@ namespace HelloDotNetGuide.CSharp语法
         /// </summary>
         public static void Exercise16_ValueVsReference()
         {
-            // TODO: 在这里编写代码
+            int a = 10;
+            int b = a;
+            b = 20;
+            Console.WriteLine($"a={a},b={b}");
+            Student s1 = new Student("小明", 18);
+            Student s2 = s1;
+            Console.WriteLine($"s1的年龄为={s1.Age}");
+            s2.Age = 19;
+            Console.WriteLine($"s1的年龄为={s1.Age},s2的年龄为={s2.Age}");
+            //值类类型赋值时是复制本身在栈中新开辟了一块区域，两者并无关联
+            //引用类型赋值时是赋值地址，它们在推中指向同一对象
         }
 
         /// <summary>
@@ -517,7 +527,24 @@ namespace HelloDotNetGuide.CSharp语法
         /// </summary>
         public static void Exercise17_StringToObject()
         {
-            // TODO: 在这里编写代码
+            string[] student = { "张三,25", "李四,30", "王五,22" };
+            Student[] students = new Student[student.Length+1];
+            Student student1 = new Student("ljj",19);
+           for(int i=0; i < student.Length; i++)
+            {
+                string[] f = student[i].Split(',', StringSplitOptions.TrimEntries);
+                if (f.Length < 2 || !int.TryParse(f[1], out int age)) continue;
+                students[i] = new Student(f[0], age);
+            }
+            students[students.Length - 1] = new Student("ljj", 19);
+            foreach (var arr in students)
+            {
+                if (arr == null)
+                {
+                    continue;
+                }
+                arr.Introduce();
+            }
         }
 
         #endregion
