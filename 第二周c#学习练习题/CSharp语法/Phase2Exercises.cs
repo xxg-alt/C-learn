@@ -559,9 +559,65 @@ namespace HelloDotNetGuide.CSharp语法
         /// 3. 创建 3 个学生存入数组，输出每个人的平均分和等级
         /// 4. 找出全班平均分最高的学生
         /// </summary>
+        public class StudentV2 
+        {
+            string Name;
+            float averagescore;
+            float Match, English, Chinese;
+            public StudentV2(string name, float Match, float English, float Chinese)
+            {
+                this.Name = name;
+                this.Match = Match;
+                this.English = English;
+                this.Chinese = Chinese;
+            }
+            public float GetAverage()
+            {
+                averagescore = (Match + English + Chinese) / 3;
+                Console.WriteLine($"平均分为{averagescore}");
+                return averagescore;
+            }
+            public void Getlevel()
+            {
+                string Score = averagescore switch
+                {
+                    >=90 =>"优秀",
+                    >=70 =>"良好",
+                    >=60 =>"及格",
+                    _ => "不及格"
+                };
+                Console.WriteLine(Score);
+            }
+        }
         public static void Exercise18_GradeManagement()
         {
-            // TODO: 在这里编写代码
+            float[] Score = new float[3];
+            float Max = Score[0];
+            List<StudentV2> student = new List<StudentV2>
+            {
+               new StudentV2("ljj",80,60,80),
+               new StudentV2("gy",80,100,90),
+               new StudentV2("hj",80, 80,80)
+            };
+            //foreach (var arr in student)
+            //{
+            //    arr.GetAverage();
+            //    Score[i] = arr.GetAverage();
+            //    arr.Getlevel();
+            //}
+            for(int i= 0; i < student.Count; i++)
+            {
+               Score[i] = student[i].GetAverage();
+                student[i].Getlevel();
+            }
+            for(int i =0; i < Score.Length; i++)
+            {
+                if (Score[i] > Max)
+                {
+                    Max = Score[i + 1];
+                }
+            }
+            Console.WriteLine($"最大平均分为{Max}");
         }
 
         /// <summary>

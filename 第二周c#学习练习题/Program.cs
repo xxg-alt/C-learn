@@ -26,8 +26,8 @@ namespace HelloDotNetGuide
             //Phase2Exercises.Exercise14_ObjectArray();
             //Phase2Exercises.Exercise15_ObjectAsParameter();
             //Phase2Exercises.Exercise16_ValueVsReference();
-            Phase2Exercises.Exercise17_StringToObject();
-            //Phase2Exercises.Exercise18_GradeManagement();
+            //Phase2Exercises.Exercise17_StringToObject();
+            Phase2Exercises.Exercise18_GradeManagement();
             //Phase2Exercises.Exercise19_BankAccount();
 
             // 参考答案调用示例：
