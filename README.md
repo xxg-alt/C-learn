@@ -8,15 +8,62 @@
 |:---:|---|---|---|:---:|
 | 第 1 周 | 2026-09 | C# 基础语法 | 变量、运算符、if-else、循环、方法、数组、字符串 | ✅ 已完成 |
 | 第 2 周 | 2026-09 | 面向对象基础 | 类与对象、构造函数、this、静态成员、属性与封装、继承、多态 | 🚧 进行中 |
-| 第 3 周 | — | 待定 | — | ⬜ 未开始 |
+| 第 3 周 | 2026-10 | 集合与异常处理 | List、Dictionary、Stack/Queue、泛型方法、try-catch、finally、自定义异常 | 🚧 进行中 |
 
 ## 目录结构
 
 ```
 C-learn/
 ├─ 第一周c#学习练习题/     # Phase1Exercises.cs / Phase1ExerciseAnswers.cs / Program.cs
-└─ 第二周c#学习练习题/     # HelloDotNetGuide.csproj / .sln / Program.cs / CSharp语法/
+├─ 第二周c#学习练习题/     # HelloDotNetGuide.csproj / .sln / Program.cs / CSharp语法/
+└─ 第三周c#学习练习题/     # 同第二周结构，主题：集合与异常处理
 ```
+
+## 第三周进度明细（共 19 题）
+
+### 一、List<T> 基础
+
+| 编号 | 练习内容 | 状态 |
+|:---:|---|:---:|
+| 01 | 创建 List 并遍历（Add / Count） | ⬜ |
+| 02 | 插入与删除（Insert / Remove / RemoveAt） | ⬜ |
+| 03 | 查找（Contains / IndexOf / Find / FindAll + Lambda） | ⬜ |
+| 04 | 排序与统计（Sort / Reverse / 手写求和均值） | ⬜ |
+
+### 二、Dictionary<TKey, TValue>
+
+| 编号 | 练习内容 | 状态 |
+|:---:|---|:---:|
+| 05 | 字典基础（添加 / 取值 / Count） | ⬜ |
+| 06 | 安全访问（ContainsKey / TryGetValue） | ⬜ |
+| 07 | 遍历键值对与修改值 | ⬜ |
+| 08 | 词频统计（Split + Dictionary） | ⬜ |
+
+### 三、集合进阶与泛型
+
+| 编号 | 练习内容 | 状态 |
+|:---:|---|:---:|
+| 09 | List 存对象（List\<Student3\>） | ⬜ |
+| 10 | 对象排序（Sort + Comparison） | ⬜ |
+| 11 | Stack 与 Queue（后进先出 / 先进先出） | ⬜ |
+| 12 | 泛型方法（Max\<T\> + where 约束） | ⬜ |
+
+### 四、异常处理
+
+| 编号 | 练习内容 | 状态 |
+|:---:|---|:---:|
+| 13 | try-catch 基础（FormatException / DivideByZeroException） | ⬜ |
+| 14 | 多个 catch 分支与兜底 Exception | ⬜ |
+| 15 | finally 块 | ⬜ |
+| 16 | throw 与自定义异常（衔接第2周练习7） | ⬜ |
+
+### 五、综合挑战
+
+| 编号 | 练习内容 | 状态 |
+|:---:|---|:---:|
+| 17 | 通讯录（Dictionary + 菜单循环） | ⬜ |
+| 18 | 异常安全的数字收集器 | ⬜ |
+| 19 | 成绩管理系统 V3（三周知识总集成） | ⬜ |
 
 ## 第二周进度明细（共 19 题）
 
@@ -62,7 +109,7 @@ C-learn/
 | 编号 | 练习内容 | 状态 |
 |:---:|---|:---:|
 | 18 | 学生成绩管理系统 | ✅ |
-| 19 | 银行账户系统 | ⬜ |
+| 19 | 银行账户系统 | ✅ |
 
 ## 环境说明
 

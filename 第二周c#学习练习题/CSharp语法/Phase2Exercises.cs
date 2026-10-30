@@ -630,9 +630,61 @@ namespace HelloDotNetGuide.CSharp语法
         /// 5. 模拟操作：开户(初始1000) -> 存500 -> 取2000(应失败) -> 取300 -> 输出余额
         /// 综合考点：封装、验证、静态成员、方法设计
         /// </summary>
+        public class BankAccount 
+        {
+            private double balance;
+            public double Balance { get { return balance; } }
+            public BankAccount(double IntBankaccount)
+            {
+                balance = IntBankaccount;
+            }
+            public void Deposit(double amount)
+            {
+                if (amount <= 0)
+                {
+                    Console.WriteLine("存款金额必须大于 0");
+                }
+                else
+                {
+                    balance += amount;
+                    Console.WriteLine($"存款成功，银行账户金额为{balance}");
+                }
+            }
+            public void Withdraw(double amount)
+            {
+                if (balance < amount)
+                {
+                    Console.WriteLine("余额不足");
+                    
+                }
+                else
+                {
+                    balance -= amount;
+                    Console.WriteLine($"取款{amount}成功,银行账户金额为{balance}");
+                }
+            }
+        }
+        private static double ReadAmount(string prompt)
+        {
+            while (true)
+            {
+
+                Console.Write(prompt);
+                if (double.TryParse(Console.ReadLine(),out double amount))
+                {
+                    return amount;
+                }
+                Console.WriteLine("输入的不是有效数字，请重新输入");
+            }
+        }
+
         public static void Exercise19_BankAccount()
         {
-            // TODO: 在这里编写代码
+
+            BankAccount bankAccount = new BankAccount(1000);
+            bankAccount.Deposit(ReadAmount("请输入存款金额："));
+            bankAccount.Withdraw(ReadAmount("请输入取款金额："));
+            
         }
 
         #endregion
