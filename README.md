@@ -25,16 +25,16 @@ C-learn/
 
 | 编号 | 练习内容 | 状态 |
 |:---:|---|:---:|
-| 01 | 创建 List 并遍历（Add / Count） | ⬜ |
-| 02 | 插入与删除（Insert / Remove / RemoveAt） | ⬜ |
-| 03 | 查找（Contains / IndexOf / Find / FindAll + Lambda） | ⬜ |
-| 04 | 排序与统计（Sort / Reverse / 手写求和均值） | ⬜ |
+| 01 | 创建 List 并遍历（Add / Count） | ✅ |
+| 02 | 插入与删除（Insert / Remove / RemoveAt） | ✅ |
+| 03 | 查找（Contains / IndexOf / Find / FindAll + Lambda） | ✅ |
+| 04 | 排序与统计（Sort / Reverse / 手写求和均值） | ✅ |
 
 ### 二、Dictionary<TKey, TValue>
 
 | 编号 | 练习内容 | 状态 |
 |:---:|---|:---:|
-| 05 | 字典基础（添加 / 取值 / Count） | ⬜ |
+| 05 | 字典基础（添加 / 取值 / Count） | ✅ |
 | 06 | 安全访问（ContainsKey / TryGetValue） | ⬜ |
 | 07 | 遍历键值对与修改值 | ⬜ |
 | 08 | 词频统计（Split + Dictionary） | ⬜ |
