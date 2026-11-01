@@ -12,9 +12,9 @@ namespace HelloDotNetGuide
 
             Phase3Exercises.Exercise01_ListBasics();
             Phase3Exercises.Exercise02_InsertAndRemove();
-            //Phase3Exercises.Exercise03_Search();
-            //Phase3Exercises.Exercise04_SortAndStats();
-            //Phase3Exercises.Exercise05_DictBasics();
+            Phase3Exercises.Exercise03_Search();
+            Phase3Exercises.Exercise04_SortAndStats();
+            Phase3Exercises.Exercise05_DictBasics();
             //Phase3Exercises.Exercise06_SafeAccess();
             //Phase3Exercises.Exercise07_Traverse();
             //Phase3Exercises.Exercise08_WordCount();

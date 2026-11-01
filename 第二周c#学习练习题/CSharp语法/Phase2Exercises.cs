@@ -652,10 +652,9 @@ namespace HelloDotNetGuide.CSharp语法
             }
             public void Withdraw(double amount)
             {
-                if (balance < amount)
+                if (balance < amount|| amount <= 0)
                 {
                     Console.WriteLine("余额不足");
-                    
                 }
                 else
                 {
@@ -684,7 +683,9 @@ namespace HelloDotNetGuide.CSharp语法
             BankAccount bankAccount = new BankAccount(1000);
             bankAccount.Deposit(ReadAmount("请输入存款金额："));
             bankAccount.Withdraw(ReadAmount("请输入取款金额："));
-            
+            Console.WriteLine("按任意键退出...");
+            Console.ReadKey();
+
         }
 
         #endregion

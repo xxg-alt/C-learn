@@ -1,3 +1,6 @@
+using System.Security.Cryptography.X509Certificates;
+using System.Xml.Schema;
+
 namespace HelloDotNetGuide.CSharp语法
 {
     /// <summary>
@@ -41,6 +44,7 @@ namespace HelloDotNetGuide.CSharp语法
         {
             List<string> fruits = new List<string> { "苹果", "香蕉", "橘子" };
             fruits.Insert(1, "葡萄");
+            fruits.Add("ljj");
             foreach (var arr in fruits)
             {
                 Console.WriteLine($"{arr}");
@@ -65,7 +69,19 @@ namespace HelloDotNetGuide.CSharp语法
         /// </summary>
         public static void Exercise03_Search()
         {
-            // TODO: 在这里编写代码
+            List<int> nyms = new List<int>{ 5, 12, 8, 21, 12, 3 };
+            bool n = nyms.Contains(8);
+            Console.WriteLine($"{n}");
+            int n1 = nyms.IndexOf(12);
+            Console.WriteLine($"{n1}");
+            int n2 = nyms.Find(X => X>10);
+            Console.WriteLine($"{n2}");
+            List<int> n3 = nyms.FindAll(x=>x% 2 ==0);
+            foreach (var item in n3)
+            {
+                Console.Write($"{item}/");
+            }
+            Console.WriteLine();
         }
 
         /// <summary>
@@ -76,15 +92,46 @@ namespace HelloDotNetGuide.CSharp语法
         /// 3. 用循环（不用内置 Sum/Average）求总和与平均值，输出保留 1 位小数
         /// 回顾：第一周练习16用数组做过一模一样的事，对比一下代码量
         /// </summary>
+        public void Average(List<double> scores)
+        {
+            double count = 0;
+            for(int i = 0; i < scores.Count; i++)
+            {
+                count = scores[i];
+            }
+            double average = count / scores.Count;
+            Console.Write($"{average}");
+        }
         public static void Exercise04_SortAndStats()
         {
-            // TODO: 在这里编写代码
+            List<double> scores = new List<double> { 88.5, 92.0, 76.5, 100, 63.0 };
+            scores.Sort();
+            foreach (var item in scores)
+            {
+                Console.Write($"{item}/");
+            }
+            Console.WriteLine();
+            scores.Reverse();
+            foreach (var item in scores)
+            {
+                Console.Write($"{item}/");
+            }
+            Console.WriteLine();
+            double count = 0;
+            for (int i = 0; i < scores.Count; i++)
+            {
+                count = scores[i];
+            }
+            double average = count / scores.Count;
+            Console.Write($"{average},{count}");
+            Console.WriteLine("");
+            Console.WriteLine("#############");
         }
-
+        
         #endregion
 
         #region 二、Dictionary<TKey, TValue>
-
+         
         /// <summary>
         /// 练习5：字典基础
         /// 1. 创建 Dictionary<string, int> ages，添加三个键值对：
@@ -94,7 +141,17 @@ namespace HelloDotNetGuide.CSharp语法
         /// </summary>
         public static void Exercise05_DictBasics()
         {
-            // TODO: 在这里编写代码
+            Dictionary<string, int> ages = new Dictionary<string, int>{["张三"] = 18, ["李四"] = 22, ["王五"] = 20};
+            int n = ages["李四"];
+            Console.WriteLine($"李四={n},count={ages.Count}");
+            if (ages.TryGetValue("张三", out int age))
+            {
+                Console.WriteLine($"{age}");
+            }
+            else
+            {
+                Console.WriteLine("查无此人");
+            }
         }
 
         /// <summary>
