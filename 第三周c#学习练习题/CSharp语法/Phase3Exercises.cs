@@ -1,5 +1,8 @@
 using System.Security.Cryptography.X509Certificates;
 using System.Xml.Schema;
+using System.Collections;
+using System.Collections.Generic;
+
 
 namespace HelloDotNetGuide.CSharp语法
 {
@@ -152,6 +155,8 @@ namespace HelloDotNetGuide.CSharp语法
             {
                 Console.WriteLine("查无此人");
             }
+            Console.WriteLine("");
+            Console.WriteLine("#############");
         }
 
         /// <summary>
@@ -162,7 +167,14 @@ namespace HelloDotNetGuide.CSharp语法
         /// </summary>
         public static void Exercise06_SafeAccess()
         {
-            // TODO: 在这里编写代码
+           Dictionary<string,int>ages = new Dictionary<string, int>{ ["张三"] = 18, ["李四"] = 22, ["王五"] = 20};
+            if (ages.ContainsKey("张三")) Console.WriteLine("存在");
+            else
+                Console.WriteLine("查无此人");
+            if(ages.TryGetValue("赵六",out int age)) Console.WriteLine($"{age}");
+            else Console.WriteLine("查无此人");
+            Console.WriteLine("");
+            Console.WriteLine("#############");
         }
 
         /// <summary>
@@ -174,7 +186,20 @@ namespace HelloDotNetGuide.CSharp语法
         /// </summary>
         public static void Exercise07_Traverse()
         {
-            // TODO: 在这里编写代码
+            Dictionary<string, int> ages = new Dictionary<string, int> { ["张三"] = 18, ["李四"] = 22, ["王五"] = 20 };
+            foreach (var item in ages)
+            {
+                Console.WriteLine($"{item.Key}={item.Value}");
+                Console.WriteLine($"{item.Key}");
+            }
+            ages["王五"] = 21;
+            foreach (var item in ages)
+            {
+                Console.WriteLine($"{item.Key}={item.Value}");
+                Console.WriteLine($"{item.Key}");
+            }
+            Console.WriteLine("");
+            Console.WriteLine("#############");
         }
 
         /// <summary>
@@ -187,7 +212,28 @@ namespace HelloDotNetGuide.CSharp语法
         /// </summary>
         public static void Exercise08_WordCount()
         {
-            // TODO: 在这里编写代码
+            string sentence = "the quick brown fox jumps over the lazy dog the fox";
+            string[] n1=sentence.Split(' ');
+            Dictionary<string, int> arr = new Dictionary<string, int> { };
+            //for(int i = 0; i < n1.Length; i++)
+            //{
+            //    Dictionary<string, int> arr = new Dictionary<string, int> { [n1[i]] = 0, };
+            //}
+            foreach (var item in n1)
+            {
+                if (arr.ContainsKey(item))
+                {
+                    arr[item] += 1;
+                }
+                else
+                {
+                    arr[item] = 1;
+                }
+            }
+            foreach(var n in arr)
+            {
+                Console.WriteLine($"{n.Key}={n.Value}");
+            }
         }
 
         #endregion
@@ -202,9 +248,38 @@ namespace HelloDotNetGuide.CSharp语法
         /// 3. foreach 遍历调用 Introduce()
         /// 4. 删除第 2 个学生（RemoveAt），再遍历验证
         /// </summary>
+        public class Student3 
+        {
+            public string Name { get; set; }
+            public int Age { get; set; }
+            public Student3(string name,int age)
+            {
+                Name = name;
+                Age = age;
+            }
+            public void Introduce()
+            {
+                Console.WriteLine($"{Name},{Age}");
+            }
+        }
         public static void Exercise09_ListOfObjects()
         {
-            // TODO: 在这里编写代码
+            Student3 s1 = new Student3("ljj", 19);
+            Student3 s2 = new Student3("gy", 18);
+            Student3 s3 = new Student3("Tom", 18);
+            List<Student3> stu = new List<Student3> {s1,s2,s3 };
+            foreach (var item in stu)
+            {
+                item.Introduce();
+            }
+            stu.RemoveAt(2);
+            Console.WriteLine("删除后");
+            foreach (var item in stu)
+            {
+                item.Introduce();
+            }
+            Console.WriteLine("");
+            Console.WriteLine("#############");
         }
 
         /// <summary>
@@ -215,7 +290,21 @@ namespace HelloDotNetGuide.CSharp语法
         /// </summary>
         public static void Exercise10_SortObjects()
         {
-            // TODO: 在这里编写代码
+            Student3 s1 = new Student3("ljj", 19);
+            Student3 s2 = new Student3("gy", 18);
+            Student3 s3 = new Student3("Tom", 18);
+            List<Student3> stu = new List<Student3> { s1, s2, s3 };
+            stu.Sort((a, b) => a.Age - b.Age);
+            foreach (var item in stu)
+            {
+                item.Introduce();
+            }
+            stu.Sort((a, b) => string.Compare(a.Name, b.Name));
+            Console.WriteLine("按Name排序");
+            foreach (var item in stu)
+            {
+                item.Introduce();
+            }
         }
 
         /// <summary>
@@ -226,7 +315,44 @@ namespace HelloDotNetGuide.CSharp语法
         /// </summary>
         public static void Exercise11_StackQueue()
         {
-            // TODO: 在这里编写代码
+            Stack n1 = new Stack();
+            //压
+            n1.Push(1);
+            n1.Push(2);
+            n1.Push(3);
+            foreach (var item in n1)
+            {
+                Console.WriteLine($"{item}");
+            }
+            //取
+            n1.Pop();
+            n1.Pop();
+            n1.Pop();
+            foreach (var item in n1)
+            {
+                Console.WriteLine($"{item}");
+            }
+            //查
+            n1.Push(1);
+            n1.Push("23123");
+            n1.Push(3.5f);
+            object v = n1.Peek();
+            Console.WriteLine($"{v}");
+            Console.WriteLine("Queue<int>（先进先出）");
+            Queue queue = new Queue();
+            queue.Enqueue(1);
+            queue.Enqueue("ljj");
+            queue.Enqueue(1.5f);
+            foreach (var item in queue)
+            {
+                Console.WriteLine($"{item}");
+            }
+            queue.Dequeue();
+            queue.Dequeue();
+            foreach (var item in queue)
+            {
+                Console.WriteLine($"{item}");
+            }
         }
 
         /// <summary>
@@ -237,9 +363,14 @@ namespace HelloDotNetGuide.CSharp语法
         /// 2. 分别用 int、double、string 三种类型调用它，验证都能用
         /// 思考：为什么不用重载写三份几乎一样的代码？
         /// </summary>
+        private static T Max<T>(T a,T b) where T : IComparable<T>
+        {
+            return a.CompareTo(b)>=0 ? a :b;
+        }
         public static void Exercise12_GenericMethod()
         {
-            // TODO: 在这里编写代码
+            Console.WriteLine(Max(3, 7));
+            Console.WriteLine(Max("apple", "ljj"));
         }
 
         #endregion
@@ -255,7 +386,23 @@ namespace HelloDotNetGuide.CSharp语法
         /// </summary>
         public static void Exercise13_TryCatch()
         {
-            // TODO: 在这里编写代码
+            try
+            {
+                int a = int.Parse("abc");
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("格式错误");
+                
+            }
+            try
+            {
+                int x = 10; x /= 0;
+            }
+            catch (DivideByZeroException) 
+            {
+                Console.WriteLine("格式错误");
+            }
         }
 
         /// <summary>
@@ -266,9 +413,28 @@ namespace HelloDotNetGuide.CSharp语法
         /// 3. 测试 SafeDivide(10, 2) 和 SafeDivide(10, 0)
         /// 思考：为什么具体异常要写在兜底 Exception 前面？
         /// </summary>
+         public static float SafeDivide(int a , int b)
+        {
+            try
+            {
+                return a / b;
+               
+            }
+            catch(DivideByZeroException)
+            {
+                Console.WriteLine("除数不能为0");
+                return 0;
+            }
+            finally
+            {
+                Console.WriteLine("清理资源（无论如何都会执行）");
+            }
+        }
         public static void Exercise14_MultipleCatch()
         {
-            // TODO: 在这里编写代码
+            float a = SafeDivide(10, 2);
+            Console.WriteLine(a);
+            SafeDivide(10, 0);
         }
 
         /// <summary>
@@ -280,7 +446,20 @@ namespace HelloDotNetGuide.CSharp语法
         /// </summary>
         public static void Exercise15_Finally()
         {
-            // TODO: 在这里编写代码
+            try
+            {
+                Console.WriteLine("开始处理");
+                throw new InvalidOperationException("故意抛出的异常");
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            finally
+            {
+                Console.WriteLine("清理资源（无论如何都会执行）");
+            }
+            //finally无论如何都会执行用来收尾
         }
 
         /// <summary>
@@ -292,9 +471,44 @@ namespace HelloDotNetGuide.CSharp语法
         ///    （对比第二周练习7：那时只是打印提示，现在是主动抛异常）
         /// 3. 用 try-catch 包住赋值 p.Age = -5，捕获后输出异常消息
         /// </summary>
+        public class AgeOutOfRangeException : Exception 
+        { 
+            public AgeOutOfRangeException(string message) : base(message)
+            {
+
+            }
+        }
+        public class Preson
+        {
+            private int age;
+            public int Age
+            {
+                get
+                {
+                    return age;
+                }
+                set
+                {
+                    if (value < 0 || value > 150)
+                    {
+                        throw new AgeOutOfRangeException("年龄必须在0到150之间");
+                    }
+                    age = value;
+                }
+            }
+        }
+
         public static void Exercise16_CustomException()
         {
-            // TODO: 在这里编写代码
+            Preson p = new Preson();
+            try
+            {
+                p.Age = -3;
+            }
+            catch(AgeOutOfRangeException ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
 
         #endregion
@@ -312,7 +526,69 @@ namespace HelloDotNetGuide.CSharp语法
         /// </summary>
         public static void Exercise17_Contacts()
         {
-            // TODO: 在这里编写代码
+            Dictionary<string, string> text = new Dictionary<string, string>() { ["ljj"] = "13879620535", ["gy"] = "135879564655" };
+            
+            while (true)
+            {
+                Console.WriteLine("###通讯录###");
+                Console.WriteLine("1=添加联系人 2=按姓名查电话 3=删除联系人 4=显示全部 0=退出");
+                Console.Write("请输入编号");
+                int n = int.TryParse(Console.ReadLine(),out int b) ? b : 0;
+                if (n == 0)
+                {
+                    break;
+                }
+                switch (n)
+                {
+                    case 1:
+                        Console.Write("请输入添加的姓名");
+                        string Addname = Console.ReadLine() ?? "";
+                        if (text.ContainsKey(Addname))
+                        {
+                            Console.WriteLine("该联系人已存在，添加失败");
+                        }
+                        else
+                        {
+                            Console.Write("电话：");
+                            text[Addname] = Console.ReadLine() ?? "";
+                            Console.WriteLine($"已添加 {Addname}");
+                        }
+                        break;
+                    case 2:
+                        Console.Write("请输入查询姓名");
+                        string findname = Console.ReadLine() ?? "";
+                        if(text.TryGetValue(findname,out string phint))
+                        {
+                            Console.WriteLine($"已查询姓名为:{findname}，电话为:{phint}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("不存在此人 ");
+                        }
+                        break;
+                    case 3:
+                        Console.Write("请输入删除的姓名");
+                        string deletename = Console.ReadLine() ?? "";
+                        if (text.ContainsKey(deletename))
+                        {
+                            text.Remove(deletename);
+                            Console.WriteLine("删除成功");
+                        }
+                        else
+                        {
+                            Console.WriteLine("不存在此人,删除失败");
+                        }
+                        break;
+                    case 4:
+                        Console.Write("以下为通讯录全部名单");
+                        foreach (var item in text)
+                        {
+                            Console.WriteLine(item);
+                        }
+                        break;
+                }
+
+            }
         }
 
         /// <summary>

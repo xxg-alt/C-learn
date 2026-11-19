@@ -10,11 +10,11 @@ namespace HelloDotNetGuide
 
             #region Phase3Exercises（第三阶段练习题：集合与异常处理）
 
-            Phase3Exercises.Exercise01_ListBasics();
-            Phase3Exercises.Exercise02_InsertAndRemove();
-            Phase3Exercises.Exercise03_Search();
-            Phase3Exercises.Exercise04_SortAndStats();
-            Phase3Exercises.Exercise05_DictBasics();
+            //Phase3Exercises.Exercise01_ListBasics();
+            //Phase3Exercises.Exercise02_InsertAndRemove();
+            //Phase3Exercises.Exercise03_Search();
+            //Phase3Exercises.Exercise04_SortAndStats();
+            //Phase3Exercises.Exercise05_DictBasics();
             //Phase3Exercises.Exercise06_SafeAccess();
             //Phase3Exercises.Exercise07_Traverse();
             //Phase3Exercises.Exercise08_WordCount();
@@ -26,7 +26,7 @@ namespace HelloDotNetGuide
             //Phase3Exercises.Exercise14_MultipleCatch();
             //Phase3Exercises.Exercise15_Finally();
             //Phase3Exercises.Exercise16_CustomException();
-            //Phase3Exercises.Exercise17_Contacts();
+            Phase3Exercises.Exercise17_Contacts();
             //Phase3Exercises.Exercise18_SafeCollector();
             //Phase3Exercises.Exercise19_GradeSystemV3();
 
