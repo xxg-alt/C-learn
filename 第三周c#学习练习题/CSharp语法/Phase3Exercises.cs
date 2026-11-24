@@ -530,64 +530,83 @@ namespace HelloDotNetGuide.CSharp语法
             
             while (true)
             {
-                Console.WriteLine("###通讯录###");
+                Console.WriteLine("                     ###通讯录###");
                 Console.WriteLine("1=添加联系人 2=按姓名查电话 3=删除联系人 4=显示全部 0=退出");
                 Console.Write("请输入编号");
-                int n = int.TryParse(Console.ReadLine(),out int b) ? b : 0;
-                if (n == 0)
+                int n = int.TryParse(Console.ReadLine(),out int b) ? b : -1;
+                
+                if (n >= 0 && n < 5)
                 {
-                    break;
+                    if (n == 0)
+                    {
+                        break;
+                    }
+                    switch (n)
+                    {
+                        case 1:
+                            Console.Write("请输入添加的姓名");
+                            string Addname = Console.ReadLine() ?? "";
+                            if (text.ContainsKey(Addname))
+                            {
+                                Console.WriteLine("该联系人已存在，添加失败");
+                            }
+                            else
+                            {
+                                Console.Write("电话：");
+                                text[Addname] = Console.ReadLine() ?? "";
+                                Console.WriteLine($"已添加 {Addname}");
+                            }
+                            break;
+                        case 2:
+                            Console.Write("请输入查询姓名");
+                            string findname = Console.ReadLine() ?? "";
+                            if (text.TryGetValue(findname, out string phint))
+                            {
+                                Console.WriteLine($"已查询姓名为:{findname}，电话为:{phint}");
+                            }
+                            else
+                            {
+                                Console.WriteLine("不存在此人 ");
+                            }
+                            break;
+                        case 3:
+                            Console.Write("请输入删除的姓名");
+                            string deletename = Console.ReadLine() ?? "";
+                            if (text.ContainsKey(deletename))
+                            {
+                                text.Remove(deletename);
+                                Console.WriteLine("删除成功");
+                            }
+                            else
+                            {
+                                Console.WriteLine("不存在此人,删除失败");
+                            }
+                            break;
+                        case 4:
+                            Console.Write("以下为通讯录全部名单");
+                            if (text.Count == 0)
+                            {
+                                Console.Write("通讯录名单为空");
+                            }
+                            else
+                            {
+                                foreach (var item in text)
+                                {
+                                    Console.WriteLine(item);
+                                }
+                            }
+                            break;
+                    }
+                    var key = Console.ReadKey(intercept: true);
+                    if (key.Key == ConsoleKey.Escape)
+                    {
+                        break;
+                    }
                 }
-                switch (n)
+                else
                 {
-                    case 1:
-                        Console.Write("请输入添加的姓名");
-                        string Addname = Console.ReadLine() ?? "";
-                        if (text.ContainsKey(Addname))
-                        {
-                            Console.WriteLine("该联系人已存在，添加失败");
-                        }
-                        else
-                        {
-                            Console.Write("电话：");
-                            text[Addname] = Console.ReadLine() ?? "";
-                            Console.WriteLine($"已添加 {Addname}");
-                        }
-                        break;
-                    case 2:
-                        Console.Write("请输入查询姓名");
-                        string findname = Console.ReadLine() ?? "";
-                        if(text.TryGetValue(findname,out string phint))
-                        {
-                            Console.WriteLine($"已查询姓名为:{findname}，电话为:{phint}");
-                        }
-                        else
-                        {
-                            Console.WriteLine("不存在此人 ");
-                        }
-                        break;
-                    case 3:
-                        Console.Write("请输入删除的姓名");
-                        string deletename = Console.ReadLine() ?? "";
-                        if (text.ContainsKey(deletename))
-                        {
-                            text.Remove(deletename);
-                            Console.WriteLine("删除成功");
-                        }
-                        else
-                        {
-                            Console.WriteLine("不存在此人,删除失败");
-                        }
-                        break;
-                    case 4:
-                        Console.Write("以下为通讯录全部名单");
-                        foreach (var item in text)
-                        {
-                            Console.WriteLine(item);
-                        }
-                        break;
+                    Console.WriteLine("输入错误，请输入1到5的数字");
                 }
-
             }
         }
 
@@ -598,9 +617,51 @@ namespace HelloDotNetGuide.CSharp语法
         /// 3. 输入 "q" 时结束，输出收集到的所有数字、总数和平均值
         /// 4. 一个数字都没收集时输出"未收集到任何数字"（避免除零）
         /// </summary>
+        public class IntException : Exception 
+        { 
+            public IntException(string message) : base(message)
+            {
+
+            }
+        }
         public static void Exercise18_SafeCollector()
         {
-            // TODO: 在这里编写代码
+            List<int> nume = new List<int>();
+            int count = 0;
+            Console.WriteLine("请输入有效整数,输入q时结束");
+            //string num = Console.ReadLine() ?? " ";
+            while (true)
+            {
+                //Console.WriteLine("请输入有效整数,输入q时结束");
+                string num = Console.ReadLine() ?? " ";
+                if (num == "q")
+                {
+                    break;
+                }
+                try
+                {
+                    //int num2 = int.TryParse(num, out int b) ? b : 0;
+                    int num2 = int.Parse(num);
+                    nume.Add(num2);
+                }
+                catch(FormatException)
+                {
+                    Console.WriteLine("请输入有效整数");
+                }
+                if (nume.Count == 0)
+                {
+                    Console.WriteLine("未收集到任何数字");
+                }
+               
+            }
+            foreach (var item in nume)
+            {
+                Console.Write("{0}\t",item);
+
+                count += item;
+            }
+            Console.WriteLine($"总数为{count}");
+            Console.WriteLine($"平均数为{count/nume.Count}");
         }
 
         /// <summary>
@@ -618,7 +679,48 @@ namespace HelloDotNetGuide.CSharp语法
         /// </summary>
         public static void Exercise19_GradeSystemV3()
         {
-            // TODO: 在这里编写代码
+            StudentV3 n1 = new StudentV3("Ljj", 100, 95, 84);
+            StudentV3 n2 = new StudentV3("Gy", 100, 95, 100);
+            StudentV3 n3 = new StudentV3("Tom", 100, 90, 80);
+            StudentV3 n4 = new StudentV3("Jerry", 95, 80, 80);
+            List<StudentV3> studentlist = new List<StudentV3>() { n1, n2, n3,n4};
+            Dictionary< StudentV3 ,string> studentDictionary = 
+                new Dictionary< StudentV3 ,string>() {  [n1] = "优秀",[n2] ="优秀", [n3]= "良好", [n4] = "及格" };
+            List<StudentV3> TOUXIU = new List<StudentV3>();
+            List<StudentV3> LIANHAO = new List<StudentV3>();
+            List<StudentV3> JIGE = new List<StudentV3>();
+            List<StudentV3> BUJIGE = new List<StudentV3>();
+            Dictionary<string, List<StudentV3>> keys = 
+                new Dictionary<string, List<StudentV3>>() { ["优秀"] = TOUXIU, ["良好"] = LIANHAO, ["及格"] = JIGE, ["不及格"] = BUJIGE };
+            foreach (var item in studentDictionary)
+            {
+               
+            }
+        }
+        public class StudentV3 
+        {
+            private string name;
+            public string Name
+            {
+                get
+                {
+                    return name;
+                }
+                set;
+            } = " ";
+            private float Chinese, Math, English;
+            public StudentV3(string name, float Chinese,float Math,float English)
+            {
+                this.name = name;
+                this.Chinese = Chinese;
+                this.English = English;
+                this.Math = Math;
+            }
+            public void Average()
+            {
+                float average = (Chinese + Math + English) / 3;
+                Console.WriteLine($"平均分为{average}");
+            }
         }
 
         #endregion

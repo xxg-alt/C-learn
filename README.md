@@ -35,34 +35,34 @@ C-learn/
 | 编号 | 练习内容 | 状态 |
 |:---:|---|:---:|
 | 05 | 字典基础（添加 / 取值 / Count） | ✅ |
-| 06 | 安全访问（ContainsKey / TryGetValue） | ⬜ |
-| 07 | 遍历键值对与修改值 | ⬜ |
-| 08 | 词频统计（Split + Dictionary） | ⬜ |
+| 06 | 安全访问（ContainsKey / TryGetValue） | ✅ |
+| 07 | 遍历键值对与修改值 | ✅ |
+| 08 | 词频统计（Split + Dictionary） | ✅ |
 
 ### 三、集合进阶与泛型
 
 | 编号 | 练习内容 | 状态 |
 |:---:|---|:---:|
-| 09 | List 存对象（List\<Student3\>） | ⬜ |
-| 10 | 对象排序（Sort + Comparison） | ⬜ |
-| 11 | Stack 与 Queue（后进先出 / 先进先出） | ⬜ |
-| 12 | 泛型方法（Max\<T\> + where 约束） | ⬜ |
+| 09 | List 存对象（List\<Student3\>） | ✅ |
+| 10 | 对象排序（Sort + Comparison） | ✅ |
+| 11 | Stack 与 Queue（后进先出 / 先进先出） | ✅ |
+| 12 | 泛型方法（Max\<T\> + where 约束） | ✅ |
 
 ### 四、异常处理
 
 | 编号 | 练习内容 | 状态 |
 |:---:|---|:---:|
-| 13 | try-catch 基础（FormatException / DivideByZeroException） | ⬜ |
-| 14 | 多个 catch 分支与兜底 Exception | ⬜ |
-| 15 | finally 块 | ⬜ |
-| 16 | throw 与自定义异常（衔接第2周练习7） | ⬜ |
+| 13 | try-catch 基础（FormatException / DivideByZeroException） | ✅ |
+| 14 | 多个 catch 分支与兜底 Exception | ✅ |
+| 15 | finally 块 | ✅ |
+| 16 | throw 与自定义异常（衔接第2周练习7） | ✅ |
 
 ### 五、综合挑战
 
 | 编号 | 练习内容 | 状态 |
 |:---:|---|:---:|
-| 17 | 通讯录（Dictionary + 菜单循环） | ⬜ |
-| 18 | 异常安全的数字收集器 | ⬜ |
+| 17 | 通讯录（Dictionary + 菜单循环） | ✅ |
+| 18 | 异常安全的数字收集器 | ✅ |
 | 19 | 成绩管理系统 V3（三周知识总集成） | ⬜ |
 
 ## 第二周进度明细（共 19 题）
