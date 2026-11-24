@@ -27,8 +27,8 @@ namespace HelloDotNetGuide
             //Phase3Exercises.Exercise15_Finally();
             //Phase3Exercises.Exercise16_CustomException();
             //Phase3Exercises.Exercise17_Contacts();
-            Phase3Exercises.Exercise18_SafeCollector();
-            //Phase3Exercises.Exercise19_GradeSystemV3();
+            //Phase3Exercises.Exercise18_SafeCollector();
+            Phase3Exercises.Exercise19_GradeSystemV3();
 
             // 参考答案调用示例：
             //Phase3ExerciseAnswers.Exercise08_WordCount();

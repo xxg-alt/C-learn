@@ -336,7 +336,7 @@ namespace HelloDotNetGuide.CSharp语法
             n1.Push(1);
             n1.Push("23123");
             n1.Push(3.5f);
-            object v = n1.Peek();
+            object? v = n1.Peek();
             Console.WriteLine($"{v}");
             Console.WriteLine("Queue<int>（先进先出）");
             Queue queue = new Queue();
@@ -560,7 +560,7 @@ namespace HelloDotNetGuide.CSharp语法
                         case 2:
                             Console.Write("请输入查询姓名");
                             string findname = Console.ReadLine() ?? "";
-                            if (text.TryGetValue(findname, out string phint))
+                            if (text.TryGetValue(findname, out string? phint))
                             {
                                 Console.WriteLine($"已查询姓名为:{findname}，电话为:{phint}");
                             }
@@ -679,24 +679,58 @@ namespace HelloDotNetGuide.CSharp语法
         /// </summary>
         public static void Exercise19_GradeSystemV3()
         {
-            StudentV3 n1 = new StudentV3("Ljj", 100, 95, 84);
+            StudentV3 n1 = new StudentV3("Ljj", 90, 95, 84);
             StudentV3 n2 = new StudentV3("Gy", 100, 95, 100);
-            StudentV3 n3 = new StudentV3("Tom", 100, 90, 80);
-            StudentV3 n4 = new StudentV3("Jerry", 95, 80, 80);
+            StudentV3 n3 = new StudentV3("Tom", 80, 90, 70);
+            StudentV3 n4 = new StudentV3("Jerry", 60, 70, 80);
             List<StudentV3> studentlist = new List<StudentV3>() { n1, n2, n3,n4};
-            Dictionary< StudentV3 ,string> studentDictionary = 
-                new Dictionary< StudentV3 ,string>() {  [n1] = "优秀",[n2] ="优秀", [n3]= "良好", [n4] = "及格" };
-            List<StudentV3> TOUXIU = new List<StudentV3>();
-            List<StudentV3> LIANHAO = new List<StudentV3>();
-            List<StudentV3> JIGE = new List<StudentV3>();
-            List<StudentV3> BUJIGE = new List<StudentV3>();
-            Dictionary<string, List<StudentV3>> keys = 
-                new Dictionary<string, List<StudentV3>>() { ["优秀"] = TOUXIU, ["良好"] = LIANHAO, ["及格"] = JIGE, ["不及格"] = BUJIGE };
-            foreach (var item in studentDictionary)
+            //Dictionary< StudentV3 ,string> studentDictionary = 
+            //    new Dictionary< StudentV3 ,string>() {  [n1] = "优秀",[n2] ="优秀", [n3]= "良好", [n4] = "及格" };
+            //List<StudentV3> TOUXIU = new List<StudentV3>();
+            //List<StudentV3> LIANHAO = new List<StudentV3>();
+            //List<StudentV3> JIGE = new List<StudentV3>();
+            //List<StudentV3> BUJIGE = new List<StudentV3>();
+            Dictionary<string, List<StudentV3>> keys =new Dictionary<string, List<StudentV3>>();
+            foreach (var item in studentlist)
             {
-               
+                string s = item.GetLenve();
+                if (!keys.ContainsKey(s))
+                {
+                    keys[s] = new List<StudentV3>();
+                }
+                keys[s].Add(item);
+            }
+            foreach (var item in keys)
+            {
+                Console.WriteLine(item.Key);
+                Console.WriteLine(keys[item.Key].Count);
+                foreach (var item1 in keys[item.Key])
+                {
+                    Console.WriteLine(item1.Name);
+                }
+            }
+            try
+            {
+
+                Console.Write("输入你要查询的名字 ");
+                string name = Console.ReadLine() ?? " ";
+                StudentV3? stu = studentlist.Find(x => x.Name == name);
+                if (stu == null)
+                {
+                    throw new StudentNotFoundException($"查无此人：{name}");
+                }
+                Console.WriteLine($"{stu.Name} 的平均分：{stu.Average():F1}");
+            }
+            catch (StudentNotFoundException ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
+        public class StudentNotFoundException : Exception
+        {
+            public StudentNotFoundException(string message) : base(message) { }
+        }
+
         public class StudentV3 
         {
             private string name;
@@ -716,10 +750,25 @@ namespace HelloDotNetGuide.CSharp语法
                 this.English = English;
                 this.Math = Math;
             }
-            public void Average()
+            public float Average()
             {
-                float average = (Chinese + Math + English) / 3;
-                Console.WriteLine($"平均分为{average}");
+                return (Chinese + Math + English) / 3;
+            }
+            public void Show()
+            {
+                Console.WriteLine($"我是{name},平均分为{Average()}");
+            }
+            public string GetLenve()
+            {
+                string age = Average() switch
+                {
+                    >= 90 => "优秀",
+                    >= 80 => "良好",
+                    >= 70 => "及格",
+                    >= 60 => "及格",
+                    _=> "不及格"
+                };
+                return age;
             }
         }
 
