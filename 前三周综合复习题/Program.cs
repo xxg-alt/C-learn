@@ -12,7 +12,7 @@ namespace HelloDotNetGuide
 
             PhaseReviewExercises.Review01_VariablesAndOperators();
             PhaseReviewExercises.Review02_IfElse();
-            //PhaseReviewExercises.Review03_Loops();
+            PhaseReviewExercises.Review03_Loops();
             //PhaseReviewExercises.Review04_Methods();
             //PhaseReviewExercises.Review05_ArrayAndString();
             //PhaseReviewExercises.Review06_ClassAndConstructor();

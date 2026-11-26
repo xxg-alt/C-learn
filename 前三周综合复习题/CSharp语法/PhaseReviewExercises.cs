@@ -58,10 +58,10 @@ public static string TicketPrice(int age)
                 //>= 60 => "60 岁及以上 25 元",
                 //<= 59 => "18-59 岁 50 元",
                 //<= 17 => "12-17 岁 30 元",
-                <= 12 => "12 岁以下 20 元",
+                < 12 => "12 岁以下 20 元",
                 <=17 => "12-17 岁 30 元",
                 <= 59 => "18-59 岁 50 元",
-                >60 => "60 岁及以上 25 元"
+                >=60 => "60 岁及以上 25 元"
             };
             return n;
            
@@ -102,8 +102,24 @@ public static void Review02_IfElse()
 /// </summary>
 public static void Review03_Loops()
 {
-// TODO: 在这里写你的实现，写完删掉下面这行占位
-Console.WriteLine("复习03：待完成");
+            int Count = 0;
+        for(int i = 1; i < 101; i++)
+        {
+                if (i % 2 != 0)
+                {
+                    Count += i;
+                }
+        }
+         Console.WriteLine($"所有奇数的和为{Count}");
+        for(int i = 1; i <= 5; i++)
+            {
+                for(int j = 1; j <= i; j++)
+                {
+                    Console.Write($"{j}x{i}={i * j}\t");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("复习03：完成");
 }
 
 /// <summary>
