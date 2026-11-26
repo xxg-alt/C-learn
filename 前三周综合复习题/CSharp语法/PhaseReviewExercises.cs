@@ -31,8 +31,15 @@ public class PhaseReviewExercises
 /// </summary>
 public static void Review01_VariablesAndOperators()
 {
-// TODO: 在这里写你的实现，写完删掉下面这行占位
-Console.WriteLine("复习01：待完成");
+            double price = 12.5;
+            int count = 4;
+            double discount = 0.8;
+            double price2 = price * discount;
+            
+            Console.WriteLine($"原价总价为{price*count}，折后总价为{price2 * count:F2}");
+
+            Console.WriteLine($"找零 = {50- price2 * count:F2}");
+            Console.WriteLine("复习01：完成");
 }
 
 /// <summary>
@@ -44,10 +51,45 @@ Console.WriteLine("复习01：待完成");
 /// 提示2：边界想清楚：12 岁算哪一档？题目说“12 岁以下”是小于 12，12 本人进第二档
 /// 提示3：方法里 return $"年龄{age}：票价{price}元"; 主练习里 foreach 一个 int 数组来测
 /// </summary>
+public static string TicketPrice(int age) 
+{
+            string n = age switch
+            {
+                //>= 60 => "60 岁及以上 25 元",
+                //<= 59 => "18-59 岁 50 元",
+                //<= 17 => "12-17 岁 30 元",
+                <= 12 => "12 岁以下 20 元",
+                <=17 => "12-17 岁 30 元",
+                <= 59 => "18-59 岁 50 元",
+                >60 => "60 岁及以上 25 元"
+            };
+            return n;
+           
+}
 public static void Review02_IfElse()
 {
-// TODO: 在这里写你的实现，写完删掉下面这行占位
-Console.WriteLine("复习02：待完成");
+            int Age = int.TryParse(Console.ReadLine(), out int b)?b:0;
+            if (Age >= 60)
+            {
+                Console.WriteLine($"年龄{Age}：票价{TicketPrice(Age)}");
+                //TicketPrice(Age);
+            }
+            else if (18<=Age&&Age<=59)
+            {
+                Console.WriteLine($"年龄{Age}：票价{TicketPrice(Age)}");
+                //TicketPrice(Age);
+            }
+            else if(12 <= Age && Age <= 17)
+            {
+                Console.WriteLine($"年龄{Age}：票价{TicketPrice(Age)}");
+                //TicketPrice(Age);
+            }
+            else
+            {
+                Console.WriteLine($"年龄{Age}：票价{TicketPrice(Age)}");
+                //TicketPrice(Age);
+            }
+            Console.WriteLine("复习02：完成");
 }
 
 /// <summary>

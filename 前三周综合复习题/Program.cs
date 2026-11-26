@@ -11,7 +11,7 @@ namespace HelloDotNetGuide
             #region PhaseReviewExercises（前三周综合复习题）
 
             PhaseReviewExercises.Review01_VariablesAndOperators();
-            //PhaseReviewExercises.Review02_IfElse();
+            PhaseReviewExercises.Review02_IfElse();
             //PhaseReviewExercises.Review03_Loops();
             //PhaseReviewExercises.Review04_Methods();
             //PhaseReviewExercises.Review05_ArrayAndString();
